@@ -19,6 +19,20 @@ This is a documentary on making a chat application, starting with the use of Rea
 - React.js, Rest APIs, React Hooks, Props
 - Sockets
 
+## GitHub Actions: CI Workflow
+
+This project includes a CI workflow that:
+
+- Installs dependencies
+- Runs Test (If available)
+- Builds the Application
+
+**Tiggered on**:
+- push to main 
+- pull request to main
+
+This project currently has no tests. The workflow uses --passWithNoTests to allow CI to pass when no test files are found.
+
 ## Uses
 
 - [Chat Engine](https://chatengine.io/)

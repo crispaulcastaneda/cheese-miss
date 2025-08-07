@@ -28,10 +28,10 @@ This project includes a CI workflow that:
 - Builds the Application
 
 **Tiggered on**:
-- push to main 
-- pull request to main
+- `push` to `main` 
+- `pull` request to `main`
 
-This project currently has no tests. The workflow uses --passWithNoTests to allow CI to pass when no test files are found.
+This project currently has no tests. The workflow uses `--passWithNoTests` to allow CI to pass when no test files are found.
 
 ## Uses
 

@@ -1,3 +1,5 @@
+// Define a utility function to create paths
+
 function path(root, sublink) {
   return `${root}${sublink}`;
 }

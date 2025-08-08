@@ -19,7 +19,7 @@ const Profile_Menu = [
     icon: <Gear />,
   },
   {
-    title: "Profile",
+    title: "Logout",
     icon: <SignOut />,
   },
 ];
@@ -46,88 +46,16 @@ const Nav_Setting = [
   },
 ];
 
-const ChatList = [
-  {
-    id: 0,
-    img: faker.image.avatar(),
-    name: faker.name.firstName(),
-    msg: faker.music.songName(),
-    time: "9:36",
-    unread: 0,
-    pinned: true,
-    online: true,
-  },
-  {
-    id: 1,
-    img: faker.image.avatar(),
-    name: faker.name.firstName(),
-    msg: faker.music.songName(),
-    time: "12:02",
-    unread: 2,
-    pinned: true,
-    online: false,
-  },
-  {
-    id: 2,
-    img: faker.image.avatar(),
-    name: faker.name.firstName(),
-    msg: faker.music.songName(),
-    time: "10:35",
-    unread: 3,
-    pinned: false,
-    online: true,
-  },
-  {
-    id: 3,
-    img: faker.image.avatar(),
-    name: faker.name.firstName(),
-    msg: faker.music.songName(),
-    time: "04:00",
-    unread: 0,
-    pinned: false,
-    online: true,
-  },
-  {
-    id: 4,
-    img: faker.image.avatar(),
-    name: faker.name.firstName(),
-    msg: faker.music.songName(),
-    time: "08:42",
-    unread: 0,
-    pinned: false,
-    online: false,
-  },
-  {
-    id: 5,
-    img: faker.image.avatar(),
-    name: faker.name.firstName(),
-    msg: faker.music.songName(),
-    time: "08:42",
-    unread: 0,
-    pinned: false,
-    online: false,
-  },
-  {
-    id: 6,
-    img: faker.image.avatar(),
-    name: faker.name.firstName(),
-    msg: faker.music.songName(),
-    time: "08:42",
-    unread: 0,
-    pinned: false,
-    online: false,
-  },
-  {
-    id: 7,
-    img: faker.image.avatar(),
-    name: faker.name.firstName(),
-    msg: faker.music.songName(),
-    time: "08:42",
-    unread: 0,
-    pinned: false,
-    online: false,
-  },
-];
+const ChatList = Array.from({ length: 8 }).map((_, i) => ({
+  id: i,
+  img: faker.image.avatar(), // ✅ still available in v8
+  name: faker.person.firstName(), // ✅ updated API
+  msg: faker.music.songName(),
+  time: faker.date.recent().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+  unread: faker.number.int({ min: 0, max: 3 }),
+  pinned: faker.datatype.boolean(),
+  online: faker.datatype.boolean(),
+}));
 
 const Chat_History = [
   {
@@ -148,7 +76,7 @@ const Chat_History = [
   },
   {
     type: "msg",
-    message: "Can you send me an abstarct image?",
+    message: "Can you send me an abstract image?",
     incoming: false,
     outgoing: true,
   },
@@ -158,12 +86,11 @@ const Chat_History = [
     incoming: true,
     outgoing: false,
   },
-
   {
     type: "msg",
     subtype: "img",
     message: "Here You Go",
-    img: faker.image.abstract(),
+    img: faker.image.urlLoremFlickr({ category: "abstract" }), // ✅ updated
     incoming: true,
     outgoing: false,
   },
@@ -173,7 +100,6 @@ const Chat_History = [
     incoming: false,
     outgoing: true,
   },
-
   {
     type: "msg",
     subtype: "doc",
@@ -184,7 +110,7 @@ const Chat_History = [
   {
     type: "msg",
     subtype: "link",
-    preview: faker.image.cats(),
+    preview: faker.image.urlLoremFlickr({ category: "cats" }), // ✅ updated
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,

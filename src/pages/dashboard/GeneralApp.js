@@ -1,15 +1,11 @@
-import React, {Suspense} from "react";
-
-// Dynamic import for the Cat component
-// const Cat = lazy(() => import("../../components/Cat")); 
+import React from "react";
+import Chats from "./Chats";
 
 const GeneralApp = () => {
 
   return (
     <>
-      <Suspense fallback="Loading App...">
-        {/* <Cat /> */}
-      </Suspense>
+      <Chats />
     </>
   );
 };

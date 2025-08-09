@@ -69,119 +69,134 @@ const DashboardLayout = () => {
 
   return (
     <>
-      <Box 
-        p={2}
-        sx={{
-          backgroundColor: theme.palette.background.paper,
-          boxShadow: "0px 0px 2px rgba(0,0,0,.25)",
-          height: "100vh",
-          width: 100
-          }}>
-
-            <Stack 
-              direction="column"
-              alignItems={"center"}
-              justifyContent="space-between"
-              sx={{
-                height: "100%"
-              }} 
-              spacing={3}>
-
-              <Stack alignItems="center" spacing={4}>
-                <Box
-                  sx={{
-                    backgroundColor: theme.palette.warning.light,
-                    height: 64,
-                    width: 64,
-                    borderRadius: 1.5,
-                  }}>
-
-                  <img 
-                    src={Logo}
-                    alt="Logo"
-                    sx={{
-                      height: 100,
-                      objectFit: "contain",
-                    }}
-                  />
-
-              </Box>
+      <Box sx={{ display: "flex", height: "100vh" }}>
+        <Box 
+          p={2}
+          sx={{
+            backgroundColor: theme.palette.background.paper,
+            boxShadow: "0px 0px 2px rgba(0, 0, 0, .25)",
+            height: "100vh",
+            width: 100
+            }}>
 
               <Stack 
-                sx={{width:"max-content"}}
                 direction="column"
-                alignItems="center"
-                spacing={3} >
-                { Nav_Buttons.map((el) => (
+                alignItems={"center"}
+                justifyContent="space-between"
+                sx={{ height: "100%" }} 
+                spacing={3}
+                >
 
-                  el.index === selected ? 
-                  
-                  ( <Box
-                      p={1}
-                      sx={{                   
-                      backgroundColor: theme.palette.success.lighter, 
+                <Stack alignItems="center" spacing={4}>
+
+                  <Box
+                    sx={{
+                      backgroundColor: theme.palette.primary.light,
+                      height: 64,
+                      width: 64,
                       borderRadius: 1.5,
                     }}>
-                      
-                      <IconButton sx={{width: "max-content", color: "#111"}} key={el.index}> {el.icon} </IconButton>
-                  </Box>
 
-                  ) : (
-                  <IconButton
-                      onClick={() => {
-                        setSelected(el.index);
+                    <img 
+                      src={Logo}
+                      alt={"Cheese-miss Logo"}
+                      sx={{
+                        height: 100,
+                        objectFit: "contain",
                       }}
-                      sx=
-                      {{width: "max-content", color: theme.palette.mode === "light" ? "#111" : theme.palette.text.primary}}
-                      key={el.index}>
-                        {el.icon}
-                  </IconButton>
+                    />
 
-                  )
-  
-                ))}
+                </Box>
 
-                <Divider 
-                  sx={{width: "48px"}}
-                />
+                <Stack 
+                  sx={{width:"max-content"}}
+                  direction="column"
+                  alignItems="center"
+                  spacing={3} >
 
-                  { selected === 3 ? 
-                    (<Box 
-                      p={1}
-                      sx={{                   
-                      backgroundColor: theme.palette.success.lighter, 
-                      borderRadius: 1.5,
+                  { Nav_Buttons.map((el) => (
+
+                    el.index === selected ? 
+                    
+                    ( <Box
+                        key={el.index}
+                        p={1}
+                        sx={{                   
+                        backgroundColor: theme.palette.success.lighter, 
+                        borderRadius: 1.5,
                       }}>
+                        
+                        <IconButton
+                          sx={{width: "max-content", color: "#111"}}
+                          key={el.index}>
+                            {el.icon}   
+                        </IconButton>
+                    </Box>
 
-                        <IconButton sx={{width: "max-content", color: "#111"}}>
+                    ) : (
+                    <IconButton
+                        key={el.index}
+                        onClick={() => {
+                          setSelected(el.index);
+                        }}
+                        sx=
+                        {{ 
+                          width: "max-content",
+                          color: 
+                            theme.palette.mode === "light" 
+                            ? "#111" 
+                            : theme.palette.text.primary}}
+                    >
+                          {el.icon}
+                    </IconButton>
+
+                    )
+    
+                  ))}
+
+                  <Divider 
+                    sx={{width: "48px"}}
+                  />
+
+                    { selected === 3 ? (
+                      <Box 
+                        p={1}
+                        sx={{                   
+                          backgroundColor: theme.palette.success.lighter, 
+                          borderRadius: 1.5,
+                        }}>
+
+                          <IconButton sx={{ width: "max-content", color: "#111" }} >
+                            <Gear/>
+                          </IconButton>
+
+                        </Box> 
+                        ) : (
+                        <IconButton onClick={() => {
+                            setSelected(3);
+                          }}
+                          sx={{width: "max-content", color: theme.palette.mode === "light" ? "#111" : theme.palette.text.primary}}
+                        >
                           <Gear/>
                         </IconButton>
+                    )}
 
-                      </Box> 
-                      ):(
-                      <IconButton onClick={() => {
-                          setSelected(3);
-                        }}
-                        sx={{width: "max-content", color: theme.palette.mode === "light" ? "#111" : theme.palette.text.primary}}
-                      >
-                        <Gear/>
-                      </IconButton>
-                  )}
+                  </Stack>
+                </Stack>
 
+                <Stack spacing={4}>
+                  <AntSwitch onChange={() => {
+                    onToggleMode();
+                  }} defaultChecked />
+                  <Avatar src={faker.image.avatar()} />
                 </Stack>
               </Stack>
+        </Box>
 
-              <Stack spacing={4}>
-                <AntSwitch onChange={() => {
-                  onToggleMode();
-                }} defaultChecked />
-                <Avatar src={faker.image.avatar()} />
-              </Stack>
-
-            </Stack>
-
+        <Box sx={{ flex: 1 }}>
+          <Outlet />
+        </Box>
       </Box>
-      <Outlet />
     </>
   );
 };

@@ -35,5 +35,6 @@ This project currently has no tests. The workflow uses `--passWithNoTests` to al
 
 ## Uses
 
-- [Chat Engine](https://chatengine.io/)
 - [React.js](https://react.dev/learn)
+- [Phospor Icons](https://phosphoricons.com/)
+- [MUI](https://mui.com/material-ui/)

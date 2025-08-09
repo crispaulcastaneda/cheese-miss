@@ -1,17 +1,70 @@
 import React, { useState } from "react";
-import { useTheme } from "@mui/material/styles";
-import { Box, Stack, IconButton, Divider } from "@mui/material";
+import { Box, Stack, IconButton, Divider, Avatar, Switch } from "@mui/material";
+import { useTheme, styled } from "@mui/material/styles";
 import { Outlet } from "react-router-dom";
-import { Gear } from "phosphor-react"
+import { Gear } from "phosphor-react";
+import { faker } from '@faker-js/faker';
 
 import { Nav_Buttons } from "../../data";
 import Logo from "../../assets/images/cheese-no-bg.png";
+
+import useSettings from "../../hooks/useSettings";
+
+const AntSwitch = styled(Switch)(({ theme }) => ({
+  width: 40,
+  height: 20,
+  padding: 0,
+  display: 'flex',
+  '&:active': {
+    '& .MuiSwitch-thumb': {
+      width: 15,
+    },
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      transform: 'translateX(9px)',
+    },
+  },
+  '& .MuiSwitch-switchBase': {
+    padding: 2,
+    '&.Mui-checked': {
+      transform: 'translateX(20px)',
+      color: '#fff',
+      '& + .MuiSwitch-track': {
+        opacity: 1,
+        backgroundColor: '#1890ff',
+        ...theme.applyStyles('dark', {
+          backgroundColor: '#177ddc',
+        }),
+      },
+    },
+  },
+  '& .MuiSwitch-thumb': {
+    boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    transition: theme.transitions.create(['width'], {
+      duration: 200,
+    }),
+  },
+  '& .MuiSwitch-track': {
+    borderRadius: 20 / 2,
+    opacity: 1,
+    backgroundColor: 'rgba(0,0,0,.25)',
+    boxSizing: 'border-box',
+    ...theme.applyStyles('dark', {
+      backgroundColor: 'rgba(255,255,255,.35)',
+    }),
+  },
+}));
 
 const DashboardLayout = () => {
 
   const theme = useTheme();
 
   const [selected, setSelected] = useState(0);
+
+  // Trigger onToggle Mode for Switch
+  const { onToggleMode } = useSettings();
 
 
   return (
@@ -25,15 +78,23 @@ const DashboardLayout = () => {
           width: 100
           }}>
 
-            <Stack direction="column" alignItems={"center"} sx={{width: "100%"}} spacing={3}>
+            <Stack 
+              direction="column"
+              alignItems={"center"}
+              justifyContent="space-between"
+              sx={{
+                height: "100%"
+              }} 
+              spacing={3}>
 
-              <Box
-                sx={{
-                  backgroundColor: theme.palette.warning.light,
-                  height: 64,
-                  width: 64,
-                  borderRadius: 1.5,
-                }}>
+              <Stack alignItems="center" spacing={4}>
+                <Box
+                  sx={{
+                    backgroundColor: theme.palette.warning.light,
+                    height: 64,
+                    width: 64,
+                    borderRadius: 1.5,
+                  }}>
 
                   <img 
                     src={Logo}
@@ -54,21 +115,29 @@ const DashboardLayout = () => {
                 { Nav_Buttons.map((el) => (
 
                   el.index === selected ? 
-
-                  <Box 
-                    p={1}
-                    sx={{                   
-                    backgroundColor: theme.palette.success.lighter, 
-                    borderRadius: 1.5,
+                  
+                  ( <Box
+                      p={1}
+                      sx={{                   
+                      backgroundColor: theme.palette.success.lighter, 
+                      borderRadius: 1.5,
                     }}>
+                      
                       <IconButton sx={{width: "max-content", color: "#111"}} key={el.index}> {el.icon} </IconButton>
                   </Box>
 
-                  :  <IconButton
+                  ) : (
+                  <IconButton
                       onClick={() => {
                         setSelected(el.index);
                       }}
-                      sx={{width: "max-content", color: "#000"}} key={el.index}> {el.icon} </IconButton>
+                      sx=
+                      {{width: "max-content", color: theme.palette.mode === "light" ? "#111" : theme.palette.text.primary}}
+                      key={el.index}>
+                        {el.icon}
+                  </IconButton>
+
+                  )
   
                 ))}
 
@@ -76,29 +145,37 @@ const DashboardLayout = () => {
                   sx={{width: "48px"}}
                 />
 
-                { selected === 3 ? 
-                  <Box 
-                    p={1}
-                    sx={{                   
-                    backgroundColor: theme.palette.success.lighter, 
-                    borderRadius: 1.5,
-                    }}>
+                  { selected === 3 ? 
+                    (<Box 
+                      p={1}
+                      sx={{                   
+                      backgroundColor: theme.palette.success.lighter, 
+                      borderRadius: 1.5,
+                      }}>
 
-                      <IconButton sx={{width: "max-content", color: "#111"}}>
+                        <IconButton sx={{width: "max-content", color: "#111"}}>
+                          <Gear/>
+                        </IconButton>
+
+                      </Box> 
+                      ):(
+                      <IconButton onClick={() => {
+                          setSelected(3);
+                        }}
+                        sx={{width: "max-content", color: theme.palette.mode === "light" ? "#111" : theme.palette.text.primary}}
+                      >
                         <Gear/>
                       </IconButton>
+                  )}
 
-                    </Box> 
-                    :
-                    <IconButton onClick={() => {
-                        setSelected(3);
-                      }}
-                      sx={{width: "max-content", color: "#111"}}
-                    >
-                      <Gear/>
-                    </IconButton>
-              }
+                </Stack>
+              </Stack>
 
+              <Stack spacing={4}>
+                <AntSwitch onChange={() => {
+                  onToggleMode();
+                }} defaultChecked />
+                <Avatar src={faker.image.avatar()} />
               </Stack>
 
             </Stack>

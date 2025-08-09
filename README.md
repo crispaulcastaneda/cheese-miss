@@ -38,3 +38,4 @@ This project currently has no tests. The workflow uses `--passWithNoTests` to al
 - [React.js](https://react.dev/learn)
 - [Phospor Icons](https://phosphoricons.com/)
 - [MUI](https://mui.com/material-ui/)
+- [simple-bar react](https://www.npmjs.com/package/simplebar-react)

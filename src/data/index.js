@@ -46,16 +46,99 @@ const Nav_Setting = [
   },
 ];
 
-const ChatList = Array.from({ length: 8 }).map((_, i) => ({
-  id: i,
-  img: faker.image.avatar(), // ✅ still available in v8
-  name: faker.person.firstName(), // ✅ updated API
-  msg: faker.music.songName(),
-  time: faker.date.recent().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-  unread: faker.number.int({ min: 0, max: 3 }),
-  pinned: faker.datatype.boolean(),
-  online: faker.datatype.boolean(),
-}));
+const ChatList = [
+  {
+    id: 0,
+    img: faker.image.avatar(),
+    name: faker.person.firstName(),
+    msg: faker.music.songName(),
+    time: "9:36",
+    unread: 0,
+    pinned: true,
+    online: true,
+  },
+  {
+    id: 1,
+    img: faker.image.avatar(),
+    name: faker.person.firstName(),
+    msg: faker.music.songName(),
+    time: "12:02",
+    unread: 2,
+    pinned: true,
+    online: false,
+  },
+  {
+    id: 2,
+    img: faker.image.avatar(),
+    name: faker.person.firstName(),
+    msg: faker.music.songName(),
+    time: "10:35",
+    unread: 3,
+    pinned: false,
+    online: true,
+  },
+  {
+    id: 3,
+    img: faker.image.avatar(),
+    name: faker.person.firstName(),
+    msg: faker.music.songName(),
+    time: "04:00",
+    unread: 0,
+    pinned: false,
+    online: true,
+  },
+  {
+    id: 4,
+    img: faker.image.avatar(),
+    name: faker.person.firstName(),
+    msg: faker.music.songName(),
+    time: "08:42",
+    unread: 0,
+    pinned: false,
+    online: false,
+  },
+  {
+    id: 5,
+    img: faker.image.avatar(),
+    name: faker.person.firstName(),
+    msg: faker.music.songName(),
+    time: "08:42",
+    unread: 0,
+    pinned: false,
+    online: false,
+  },
+  {
+    id: 6,
+    img: faker.image.avatar(),
+    name: faker.person.firstName(),
+    msg: faker.music.songName(),
+    time: "08:42",
+    unread: 0,
+    pinned: false,
+    online: false,
+  },
+  {
+    id: 7,
+    img: faker.image.avatar(),
+    name: faker.person.firstName(),
+    msg: faker.music.songName(),
+    time: "08:42",
+    unread: 0,
+    pinned: false,
+    online: false,
+  },
+];
+
+// const ChatList = Array.from({ length: 8 }).map((_, i) => ({
+//   id: i,
+//   img: faker.image.avatar(), // ✅ still available in v8
+//   name: faker.person.firstName(), // ✅ updated API
+//   msg: faker.music.songName(),
+//   time: faker.date.recent().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+//   unread: faker.number.int({ min: 0, max: 3 }),
+//   pinned: faker.datatype.boolean(),
+//   online: faker.datatype.boolean(),
+// }));
 
 const Chat_History = [
   {

@@ -1,4 +1,4 @@
-name: React App CI
+name: Node Backend CI
 
 on:
   push:
@@ -9,6 +9,9 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend   # 👈 adjust this path to where your package.json is
 
     steps:
       - name: Checkout repository
@@ -17,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '18'   # Node 16 is EOL, use 18 or 20
 
       - name: Cache node modules
         uses: actions/cache@v3

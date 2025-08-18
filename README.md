@@ -34,8 +34,3 @@ This project includes a CI workflow that:
 This project currently has no tests. The workflow uses `--passWithNoTests` to allow CI to pass when no test files are found.
 
 ## Uses
-
-- [React.js](https://react.dev/learn)
-- [Phospor Icons](https://phosphoricons.com/)
-- [MUI](https://mui.com/material-ui/)
-- [simple-bar react](https://www.npmjs.com/package/simplebar-react)

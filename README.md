@@ -33,4 +33,23 @@ This project includes a CI workflow that:
 
 This project currently has no tests. The workflow uses `--passWithNoTests` to allow CI to pass when no test files are found.
 
-## Uses
+## Libraries and Tools
+
+Backend
+
+- [Socket.io](https://socket.io/)
+
+Database
+
+- [MongoDB](https://www.mongodb.com/)
+
+Component
+
+- [Postman](https://www.postman.com/)
+- [Axios](https://axios-http.com/docs/intro)
+- [zustand](https://zustand-demo.pmnd.rs/)
+- [react hot toast](https://react-hot-toast.com/)
+
+CSS Framework
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [Daisy UI](https://daisyui.com/docs)

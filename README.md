@@ -43,9 +43,8 @@ Database
 
 - [MongoDB](https://www.mongodb.com/)
 
-Component
+Libraries
 
-- [Postman](https://www.postman.com/)
 - [Axios](https://axios-http.com/docs/intro)
 - [zustand](https://zustand-demo.pmnd.rs/)
 - [react hot toast](https://react-hot-toast.com/)
@@ -53,3 +52,9 @@ Component
 CSS Framework
 - [Tailwind CSS](https://tailwindcss.com/docs)
 - [Daisy UI](https://daisyui.com/docs)
+
+Media Cloud-based
+- [Cloudinary](https://cloudinary.com/)
+
+API
+- [Postman](https://www.postman.com/)

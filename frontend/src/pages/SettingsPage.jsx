@@ -57,7 +57,7 @@ const SettingsPage = () => {
                       E
                     </div>
                     <div>
-                      <h3 className="font-medium text-sm">Elsa Bog</h3>
+                      <h3 className="font-medium text-sm">Elsa Bog 🔥</h3>
                       <p className="text-xs text-base-content/70">Online</p>
                     </div>
                   </div>
@@ -97,7 +97,7 @@ const SettingsPage = () => {
                       type="text"
                       className="input input-bordered flex-1 text-sm h-10"
                       placeholder="Type a message..."
-                      value="This is a preview"
+                      value="Ano na naman kaya hihirit nito."
                       readOnly
                     />
                     <button className="btn btn-primary h-10 min-h-0">

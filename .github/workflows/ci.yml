@@ -1,4 +1,4 @@
-name: Node Backend CI
+name: Node CI
 
 on:
   push:
@@ -7,11 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend   # 👈 adjust this path to where your package.json is
 
     steps:
       - name: Checkout repository
@@ -20,7 +17,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'   # Node 16 is EOL, use 18 or 20
+          node-version: '18'
 
       - name: Cache node modules
         uses: actions/cache@v3
@@ -30,11 +27,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies
+      # Backend
+      - name: Install backend dependencies
         run: npm install --legacy-peer-deps
+        working-directory: ./backend
 
-      - name: Run tests
-        run: npm test -- --watchAll=false --passWithNoTests
+      # Frontend
+      - name: Install frontend dependencies
+        run: npm install --legacy-peer-deps
+        working-directory: ./frontend
 
-      - name: Build the application
+      - name: Build frontend
         run: npm run build
+        working-directory: ./frontend

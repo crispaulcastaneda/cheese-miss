@@ -13,7 +13,13 @@ const app = express();
 
 const PORT = process.env.PORT || 5001;
 
-app.use(express.json()); // extract JSON data from requests
+// app.use(express.json()); // extract JSON data from requests - OLD
+
+// UPDATED CODE
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
+// END OF UPDATED
+
 app.use(cookieParser()); // parse cookies from requests
 app.use(cors({
     origin: "http://localhost:5173",

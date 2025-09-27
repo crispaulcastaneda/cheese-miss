@@ -18,6 +18,8 @@ This is a documentary on making a chat application, starting with the use of Rea
 - VS Code
 - React.js, Rest APIs, React Hooks, Props
 - Sockets
+- zustand, react-hot-toast
+- lucide-react
 
 ## GitHub Actions: CI Workflow
 

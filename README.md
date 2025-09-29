@@ -33,8 +33,6 @@ This project includes a CI workflow that:
 - `push` to `main` 
 - `pull` request to `main`
 
-This project currently has no tests. The workflow uses `--passWithNoTests` to allow CI to pass when no test files are found.
-
 ## Libraries and Tools
 
 Backend
